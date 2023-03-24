@@ -1,0 +1,27 @@
+<!-- <h2>{{tarea.texto | uppercase }}</h2>
+<div><span>Tarea: </span>{{tarea.texto}}</div>
+<div><span>Prioridad: </span>{{tarea.prioridad}}</div>
+<div>
+    <label for="texto">Tarea a realizar:</label>
+    <input id="texto" [(ngModel)]="tarea.texto" placeholder="texto">
+</div>
+ -->
+
+ <h2>Tareas a realizar:</h2>
+ <ul class="tareas">
+   <li *ngFor="let tarea of tareas">
+     <button [class.selected]="tarea === selectedTarea" type="button" (click)="onSelect(tarea)">
+       <span class="texto">{{tarea.texto}}</span>
+       <span class="prioridad">{{tarea.prioridad}}</span>
+     </button>
+   </li>
+ </ul>
+ 
+ <div *ngIf="selectedTarea">
+   <h2>Prioridad: {{selectedTarea.prioridad | uppercase}}</h2>
+   <div>{{selectedTarea.texto}}</div>
+   <div>
+     <label for="tarea-texto">Tarea: </label>
+     <input id="tarea-texto" [(ngModel)]="selectedTarea.texto" placeholder="texto">
+   </div>
+ </div>
